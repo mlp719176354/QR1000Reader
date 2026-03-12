@@ -1020,6 +1020,21 @@ namespace QR1000Reader
             if (dataGridViewWidth < 800) dataGridViewWidth = 800;
             
             dataGridView.Size = new Size(dataGridViewWidth, dataGridViewHeight);
+            
+            // 调整最后一列的宽度以填充剩余空间
+            if (dataGridView.Columns.Count > 0)
+            {
+                int fixedWidth = 0;
+                for (int i = 0; i < dataGridView.Columns.Count - 1; i++)
+                {
+                    fixedWidth += dataGridView.Columns[i].Width;
+                }
+                int lastColumnWidth = dataGridViewWidth - fixedWidth - dataGridView.RowHeadersWidth - 5;
+                if (lastColumnWidth > 50)
+                {
+                    dataGridView.Columns[dataGridView.Columns.Count - 1].Width = lastColumnWidth;
+                }
+            }
         }
 
         private void btnToggleAutoMode_Click(object sender, EventArgs e)
