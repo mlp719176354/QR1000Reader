@@ -29,6 +29,7 @@ publish/*.pdb
 publish/PassengerData.db
 publish/*.exe
 publish/*.dll
+publish/*.zip
 
 # OS files
 .DS_Store
