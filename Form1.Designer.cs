@@ -91,6 +91,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.lblDeviceStatus = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.grpInput.SuspendLayout();
             this.grpReadCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -501,6 +502,7 @@
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.lblDeviceStatus);
+            this.Controls.Add(this.lblVersion);
             this.Name = "Form1";
             this.Text = "护照阅读器";
             this.grpInput.ResumeLayout(false);

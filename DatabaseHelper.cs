@@ -64,6 +64,20 @@ namespace QR1000Reader
             return collection.FindAll().ToList();
         }
 
+        /// <summary>
+        /// 获取最后一条记录
+        /// </summary>
+        public static PassengerRecord GetLastRecord()
+        {
+            var collection = _db.GetCollection<PassengerRecord>("PassengerRecords");
+            var allRecords = collection.FindAll().ToList();
+            if (allRecords.Count > 0)
+            {
+                return allRecords[allRecords.Count - 1];
+            }
+            return null;
+        }
+
         public static void DeleteById(int id)
         {
             var collection = _db.GetCollection<PassengerRecord>("PassengerRecords");

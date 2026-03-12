@@ -142,10 +142,9 @@ namespace QR1000Reader
             cmbDocumentType.DisplayMember = "Name";
             cmbDocumentType.ValueMember = "Code";
 
-            // 航班时间输入框初始化（从配置读取）
-            var flightTimeConfig = ConfigHelper.GetFlightTimeConfig();
-            txtFlightHour.Text = flightTimeConfig.DefaultHour.ToString("D2");
-            txtFlightMinute.Text = flightTimeConfig.DefaultMinute.ToString("D2");
+            // 航班时间输入框初始化为空白
+            txtFlightHour.Text = "";
+            txtFlightMinute.Text = "";
         }
 
         private async void ConnectWebSocket()
@@ -809,14 +808,66 @@ namespace QR1000Reader
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // 验证必填字段
-            if (string.IsNullOrWhiteSpace(txtDepartureCode.Text) ||
-                string.IsNullOrWhiteSpace(txtArrivalCode.Text) ||
-                (string.IsNullOrWhiteSpace(txtFlightHour.Text) || string.IsNullOrWhiteSpace(txtFlightMinute.Text)) ||
-                cmbDocumentType.SelectedValue == null)
+            // 1. 验证出发港
+            if (cmbDeparturePort.SelectedIndex <= 0 || string.IsNullOrWhiteSpace(txtDepartureCode.Text))
             {
-                MessageBox.Show("请填写所有带*的必填字段", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("请选择出发港！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbDeparturePort.Focus();
                 return;
+            }
+
+            // 2. 验证到达港
+            if (cmbArrivalPort.SelectedIndex <= 0 || string.IsNullOrWhiteSpace(txtArrivalCode.Text))
+            {
+                MessageBox.Show("请选择到达港！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbArrivalPort.Focus();
+                return;
+            }
+
+            // 3. 验证航班时间
+            if (string.IsNullOrWhiteSpace(txtFlightHour.Text) || string.IsNullOrWhiteSpace(txtFlightMinute.Text))
+            {
+                MessageBox.Show("请填写航班时间！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFlightHour.Focus();
+                return;
+            }
+
+            // 4. 验证证件类型
+            if (cmbDocumentType.SelectedValue == null)
+            {
+                MessageBox.Show("请选择证件类型！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbDocumentType.Focus();
+                return;
+            }
+
+            // 5. 验证旅客姓名和证件号码是否为空
+            if (string.IsNullOrWhiteSpace(txtPassengerName.Text))
+            {
+                MessageBox.Show("旅客姓名不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassengerName.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDocumentNumber.Text))
+            {
+                MessageBox.Show("证件号码不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDocumentNumber.Focus();
+                return;
+            }
+
+            // 6. 检查是否与上一条记录重复
+            var lastRecord = DatabaseHelper.GetLastRecord();
+            if (lastRecord != null)
+            {
+                bool isSameName = string.Equals(txtPassengerName.Text.Trim(), lastRecord.PassengerName?.Trim(), StringComparison.OrdinalIgnoreCase);
+                bool isSameDocNumber = string.Equals(txtDocumentNumber.Text.Trim(), lastRecord.DocumentNumber?.Trim(), StringComparison.OrdinalIgnoreCase);
+
+                if (isSameName && isSameDocNumber)
+                {
+                    MessageBox.Show($"旅客姓名和证件号码与上一条记录相同，重复保存！\r\n\r\n上一条记录：{lastRecord.PassengerName} - {lastRecord.DocumentNumber}", 
+                        "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             // 解析证件有效期
