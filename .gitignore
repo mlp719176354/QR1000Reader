@@ -24,9 +24,9 @@ Backup_*/
 # Database files
 *.db
 
-# Publish output (exe files are too large for GitHub)
-publish/*.exe
+# Publish output
 publish/*.pdb
+publish/PassengerData.db
 
 # OS files
 .DS_Store
