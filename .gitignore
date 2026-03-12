@@ -24,12 +24,14 @@ Backup_*/
 # Database files
 *.db
 
-# Publish output
-publish/*.pdb
-publish/PassengerData.db
-publish/*.zip
-publish/*.exe
-publish/*.dll
+# Publish output - DO NOT COMMIT
+publish/
+*.pdb
+
+# PowerShell and Batch scripts - DO NOT COMMIT
+*.ps1
+*.bat
+*.cmd
 
 # OS files
 .DS_Store
@@ -39,6 +41,3 @@ Thumbs.db
 *.token
 *.secret
 *token*
-upload.ps1
-do-upload.ps1
-upload-with-token.ps1
