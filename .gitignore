@@ -1,0 +1,33 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Backup directories
+Backup_*/
+
+# Database files
+*.db
+
+# Publish output (exe files are too large for GitHub)
+publish/*.exe
+publish/*.pdb
+
+# OS files
+.DS_Store
+Thumbs.db
