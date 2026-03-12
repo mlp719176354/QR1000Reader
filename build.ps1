@@ -1,12 +1,12 @@
-# QR1000Reader 构建脚本
-# 用于编译并发布独立 EXE 到 GitHub Releases
+# QR1000Reader Build Script
+# Build and create release package for GitHub Releases
 
 $ErrorActionPreference = "Stop"
 
 Write-Host "=== QR1000Reader Build Script ===" -ForegroundColor Cyan
 
-# 1. 发布独立 EXE
-Write-Host "`n[1/3] Building standalone EXE..." -ForegroundColor Yellow
+# 1. Publish framework-dependent single-file EXE
+Write-Host "`n[1/3] Building single-file EXE (.NET 8)..." -ForegroundColor Yellow
 dotnet publish -c Release -r win-x64 -o publish
 
 if ($LASTEXITCODE -ne 0) {
@@ -14,7 +14,7 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-# 2. 检查 EXE 文件
+# 2. Check EXE file
 $exePath = "publish\QR1000Reader.exe"
 if (Test-Path $exePath) {
     $exeSize = (Get-Item $exePath).Length / 1MB
@@ -25,11 +25,11 @@ if (Test-Path $exePath) {
     exit 1
 }
 
-# 3. 创建 Release 压缩包
+# 3. Create Release package
 Write-Host "`n[3/3] Creating release package..." -ForegroundColor Yellow
 $zipPath = "publish\QR1000Reader.zip"
 
-# 压缩 publish 目录（排除不必要的文件）
+# Compress EXE and config file
 Compress-Archive -Path "publish\QR1000Reader.exe","config.yaml" -DestinationPath $zipPath -Force
 
 $zipSize = (Get-Item $zipPath).Length / 1MB
@@ -37,6 +37,7 @@ Write-Host "Package created: $zipPath" -ForegroundColor Green
 Write-Host ("          Size: {0:N2} MB" -f $zipSize) -ForegroundColor Green
 
 Write-Host "`n=== Build Complete ===" -ForegroundColor Green
-Write-Host "Please upload $zipPath to GitHub Releases:" -ForegroundColor Cyan
-Write-Host "https://github.com/mlp719176354/QR1000Reader/releases/new" -ForegroundColor White
+Write-Host "Upload requirements:" -ForegroundColor Cyan
+Write-Host "1. .NET 8 Desktop Runtime (x64): https://dotnet.microsoft.com/download/dotnet/8.0" -ForegroundColor White
+Write-Host "2. Upload $zipPath to GitHub Releases" -ForegroundColor White
 

@@ -10,7 +10,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
-    
+
     <!-- 版本信息 -->
     <Version>2026.03.12</Version>
     <FileVersion>2026.03.12</FileVersion>
