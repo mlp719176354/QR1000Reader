@@ -39,15 +39,13 @@ QR1000Reader/
 ├── MrzParser.cs          # MRZ 解析器
 ├── SinosecuWebSocketClient.cs  # WebSocket 客户端
 ├── config.yaml           # 配置文件
-├── build.ps1             # 构建脚本
-├── create-zip.ps1        # 创建 ZIP 脚本
-├── Docs/                 # 文档目录
-│   ├── PUBLISH.md        # 发布文档
-│   └── CLEANUP_SUMMARY.md # 整理总结
-└── publish/              # 发布输出目录
-    ├── QR1000Reader.exe
-    └── QR1000Reader_*.zip
+├── README.md             # 项目说明
+├── .gitignore            # Git 忽略文件
+└── Docs/                 # 文档目录
+    └── PUBLISH.md        # 发布文档
 ```
+
+**注意**: 构建脚本和发布文件在本地保存，未提交到 Git。
 
 ---
 
@@ -62,10 +60,9 @@ dotnet build
 ```bash
 # 创建发布文件
 dotnet publish -c Release -r win-x64 -o publish
-
-# 创建 ZIP 包
-powershell -ExecutionPolicy Bypass -File create-zip.ps1
 ```
+
+**注意**: 构建脚本和发布文件保存在本地，未提交到 Git。
 
 ---
 
@@ -95,7 +92,6 @@ powershell -ExecutionPolicy Bypass -File create-zip.ps1
 ## 📖 文档
 
 - [发布文档](Docs/PUBLISH.md) - 发布流程和使用说明
-- [整理总结](Docs/CLEANUP_SUMMARY.md) - 项目整理报告
 
 ---
 
