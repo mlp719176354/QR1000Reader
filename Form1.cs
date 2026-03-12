@@ -42,7 +42,7 @@ namespace QR1000Reader
         private void InitializeTimer()
         {
             autoTimer = new System.Windows.Forms.Timer();
-            autoTimer.Interval = 500; // 500ms 检测一次
+            autoTimer.Interval = 1000; // 1000ms 检测一次（降低 CPU 占用）
             autoTimer.Tick += AutoTimer_Tick;
             autoTimer.Start();
         }
@@ -936,6 +936,9 @@ namespace QR1000Reader
 
         private void LoadData()
         {
+            // 暂停绘制以提高性能
+            dataGridView.SuspendLayout();
+            
             var records = DatabaseHelper.GetTodayRecords();
             dataGridView.Rows.Clear();
 
@@ -982,10 +985,10 @@ namespace QR1000Reader
                 // 确保最后一行完全可见
                 dataGridView.FirstDisplayedScrollingRowIndex = dataGridView.Rows.Count - 1;
                 dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells[0];
-                
-                // 强制刷新显示
-                dataGridView.Refresh();
             }
+            
+            // 恢复绘制
+            dataGridView.ResumeLayout();
         }
 
         private void btnClearSingle_Click(object sender, EventArgs e)

@@ -27,9 +27,9 @@ Backup_*/
 # Publish output
 publish/*.pdb
 publish/PassengerData.db
-publish/*.exe
-publish/*.dll
-publish/*.zip
+# publish/*.exe  # 允许上传 EXE 到 GitHub
+# publish/*.dll  # 允许上传 DLL 到 GitHub
+# publish/*.zip  # 允许上传 ZIP 到 GitHub
 
 # OS files
 .DS_Store
