@@ -1,3 +1,2 @@
 # Git LFS rules
-# EXE 文件超过 GitHub 100MB 限制，不上传到 Git
-publish/*.zip filter=lfs diff=lfs merge=lfs -text 
+# 注意：不要将敏感文件添加到 LFS

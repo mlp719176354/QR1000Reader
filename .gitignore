@@ -27,10 +27,18 @@ Backup_*/
 # Publish output
 publish/*.pdb
 publish/PassengerData.db
-# publish/*.exe  # 允许上传 EXE 到 GitHub
-# publish/*.dll  # 允许上传 DLL 到 GitHub
-# publish/*.zip  # 允许上传 ZIP 到 GitHub
+publish/*.zip
+publish/*.exe
+publish/*.dll
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Security - Never commit tokens
+*.token
+*.secret
+*token*
+upload.ps1
+do-upload.ps1
+upload-with-token.ps1
