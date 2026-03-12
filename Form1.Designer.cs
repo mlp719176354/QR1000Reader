@@ -436,19 +436,19 @@
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "序号", Width = 50 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "序号", Width = 50, Frozen = true },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港代码", Width = 80 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港名称", Width = 80 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港名称", Width = 100 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "到达港代码", Width = 80 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "到达港名称", Width = 80 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班日期", Width = 90 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班时间", Width = 70 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "到达港名称", Width = 100 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班日期", Width = 100 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班时间", Width = 80 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件类型", Width = 100 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件号码", Width = 120 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "旅客姓名", Width = 100 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "票号", Width = 100 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件号码", Width = 150 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "旅客姓名", Width = 120 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "票号", Width = 120 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件状态", Width = 80 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "创建时间", Width = 90 }
             });
@@ -459,8 +459,12 @@
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.Size = new System.Drawing.Size(1400, 350);
             this.dataGridView.TabIndex = 7;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.dataGridView.EnableHeadersVisualStyles = false;
+            this.dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.AllowUserToOrderColumns = false;
             //
             // lblDeviceStatus
             //

@@ -30,9 +30,13 @@ namespace QR1000Reader
             InitializeApp();
             InitializeTimer();
             InitializeInputHandlers();
-            
+
             // 设置窗体启动时最大化
             this.WindowState = FormWindowState.Maximized;
+            
+            // 调整 DataGridView 大小以适应窗口
+            this.Resize += Form1_Resize;
+            AdjustDataGridViewSize();
         }
 
         private void InitializeTimer()
@@ -312,15 +316,35 @@ namespace QR1000Reader
         {
             try
             {
-                byte[] imageBytes = Convert.FromBase64String(base64String);
+                // 移除可能存在的头部（如 "data:image/jpeg;base64,"）
+                string base64Data = base64String;
+                if (base64String.Contains(","))
+                {
+                    base64Data = base64String.Substring(base64String.IndexOf(",") + 1);
+                }
+
+                byte[] imageBytes = Convert.FromBase64String(base64Data);
                 using (var ms = new MemoryStream(imageBytes))
                 {
-                    pictureBox.Image = Image.FromStream(ms);
+                    // 先释放旧图像
+                    if (pictureBox.Image != null)
+                    {
+                        pictureBox.Image.Dispose();
+                        pictureBox.Image = null;
+                    }
+
+                    // 创建新图像
+                    Image img = Image.FromStream(ms);
+                    pictureBox.Image = img;
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    
+                    txtRecognizedText.AppendText($"图像已显示：{img.Width}x{img.Height}\r\n");
                 }
             }
             catch (Exception ex)
             {
                 txtRecognizedText.AppendText($"图像显示失败：{ex.Message}\r\n");
+                txtRecognizedText.AppendText($"Base64 长度：{base64String.Length}\r\n");
             }
         }
 
@@ -975,6 +999,27 @@ namespace QR1000Reader
         private void rbtnManualInput_CheckedChanged(object sender, EventArgs e)
         {
             m_bManualInput = rbtnManualInput.Checked;
+        }
+
+        /// <summary>
+        /// 调整 DataGridView 大小以适应窗口
+        /// </summary>
+        private void Form1_Resize(object? sender, EventArgs e)
+        {
+            AdjustDataGridViewSize();
+        }
+
+        private void AdjustDataGridViewSize()
+        {
+            // DataGridView 从顶部 370 开始，底部留 50 像素
+            int dataGridViewHeight = this.ClientSize.Height - 370 - 50;
+            if (dataGridViewHeight < 200) dataGridViewHeight = 200;
+            
+            // DataGridView 宽度为窗口宽度减去左右边距
+            int dataGridViewWidth = this.ClientSize.Width - 24;
+            if (dataGridViewWidth < 800) dataGridViewWidth = 800;
+            
+            dataGridView.Size = new Size(dataGridViewWidth, dataGridViewHeight);
         }
 
         private void btnToggleAutoMode_Click(object sender, EventArgs e)
