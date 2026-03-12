@@ -1011,16 +1011,24 @@ namespace QR1000Reader
 
         private void AdjustDataGridViewSize()
         {
-            // DataGridView 从顶部 370 开始，底部留 50 像素
-            int dataGridViewHeight = this.ClientSize.Height - 370 - 50;
-            if (dataGridViewHeight < 200) dataGridViewHeight = 200;
+            // 获取任务栏高度（使用 Screen 类）
+            int taskbarHeight = Screen.PrimaryScreen.WorkingArea.Bottom - Screen.PrimaryScreen.Bounds.Bottom;
+            taskbarHeight = Math.Abs(taskbarHeight); // 任务栏高度为正值
             
+            // 计算可用高度：从顶部 370 开始，底部留出任务栏空间和版本文本空间
+            int bottomMargin = 50 + taskbarHeight; // 底部边距 + 任务栏高度
+            int dataGridViewHeight = this.ClientSize.Height - 370 - bottomMargin;
+            if (dataGridViewHeight < 200) dataGridViewHeight = 200;
+
             // DataGridView 宽度为窗口宽度减去左右边距
             int dataGridViewWidth = this.ClientSize.Width - 24;
             if (dataGridViewWidth < 800) dataGridViewWidth = 800;
-            
+
             dataGridView.Size = new Size(dataGridViewWidth, dataGridViewHeight);
             
+            // 设置版本文本位置（在 DataGridView 下方）
+            lblVersion.Location = new Point(12, dataGridView.Bottom + 10);
+
             // 调整最后一列的宽度以填充剩余空间
             if (dataGridView.Columns.Count > 0)
             {

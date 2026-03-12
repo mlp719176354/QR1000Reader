@@ -49,6 +49,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label lblDeviceStatus;
+        private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Button btnToggleAutoMode;
 
         private void InitializeComponent()
@@ -465,6 +466,16 @@
             this.dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView.AllowUserToOrderColumns = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
+            //
+            // lblVersion
+            //
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(12, 730);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(100, 12);
+            this.lblVersion.TabIndex = 8;
+            this.lblVersion.Text = "版本：v2026.03.12";
+            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             //
             // lblDeviceStatus
             //
