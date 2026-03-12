@@ -27,6 +27,8 @@ Backup_*/
 # Publish output
 publish/*.pdb
 publish/PassengerData.db
+publish/*.exe
+publish/*.dll
 
 # OS files
 .DS_Store
