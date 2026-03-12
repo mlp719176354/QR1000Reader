@@ -277,7 +277,17 @@ namespace QR1000Reader
                 {
                     txtRecognizedText.AppendText("\r\n=== 开始自动填充字段 ===\r\n");
                     AutoFillFields(_currentCardData);
-                    txtRecognizedText.AppendText("=== 自动填充完成 ===\r\n\r\n");
+                    txtRecognizedText.AppendText("=== 自动填充完成 ===\r\n");
+                    
+                    // 打印 CARD_NAME 信息
+                    if (_currentCardData.ContainsKey("CARD_NAME") && !string.IsNullOrEmpty(_currentCardData["CARD_NAME"]))
+                    {
+                        txtRecognizedText.AppendText($"CARD_NAME: {_currentCardData["CARD_NAME"]}\r\n\r\n");
+                    }
+                    else
+                    {
+                        txtRecognizedText.AppendText("\r\n");
+                    }
                 }
             }
             else if (e.Param.HasValue && e.Param.Value.ValueKind == System.Text.Json.JsonValueKind.String)
@@ -894,7 +904,12 @@ namespace QR1000Reader
             // 滚动到最后一行（最新插入的数据）
             if (dataGridView.Rows.Count > 0)
             {
+                // 确保最后一行完全可见
                 dataGridView.FirstDisplayedScrollingRowIndex = dataGridView.Rows.Count - 1;
+                dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells[0];
+                
+                // 强制刷新显示
+                dataGridView.Refresh();
             }
         }
 

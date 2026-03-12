@@ -459,6 +459,8 @@
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.Size = new System.Drawing.Size(1400, 350);
             this.dataGridView.TabIndex = 7;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             //
             // lblDeviceStatus
             //

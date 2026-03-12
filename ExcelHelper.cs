@@ -63,8 +63,23 @@ namespace QR1000Reader
                     worksheet.Cell(row, 3).Value = record.ArrivalPortCode;
                     worksheet.Cell(row, 4).Value = record.DeparturePortName;
                     worksheet.Cell(row, 5).Value = record.ArrivalPortName;
-                    worksheet.Cell(row, 6).Value = record.FlightDate.ToString("yyyy-MM-dd");
-                    worksheet.Cell(row, 7).Value = record.FlightTime;
+                    
+                    // 航班日期 - 设置为日期格式
+                    worksheet.Cell(row, 6).Value = record.FlightDate;
+                    worksheet.Cell(row, 6).Style.DateFormat.Format = "yyyy-MM-dd";
+                    
+                    // 航班时间 - 解析为时间格式
+                    TimeSpan flightTimeSpan;
+                    if (TimeSpan.TryParse(record.FlightTime, out flightTimeSpan))
+                    {
+                        worksheet.Cell(row, 7).Value = flightTimeSpan;
+                        worksheet.Cell(row, 7).Style.DateFormat.Format = "hh:mm:ss";
+                    }
+                    else
+                    {
+                        worksheet.Cell(row, 7).Value = record.FlightTime;
+                    }
+                    
                     worksheet.Cell(row, 8).Value = record.TicketNumber;
                     worksheet.Cell(row, 9).Value = record.DocumentType;
                     worksheet.Cell(row, 10).Value = record.DocumentNumber;
