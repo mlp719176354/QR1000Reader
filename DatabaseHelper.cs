@@ -7,6 +7,7 @@ namespace QR1000Reader
 {
     public class PassengerRecord
     {
+        [BsonId]
         public int Id { get; set; }
         public string DeparturePortCode { get; set; }
         public string DeparturePortName { get; set; }
@@ -34,10 +35,9 @@ namespace QR1000Reader
         {
             _dbPath = dbPath;
             _db = new LiteDatabase(dbPath);
-            
+
             // 确保集合存在
             var collection = _db.GetCollection<PassengerRecord>("PassengerRecords");
-            collection.EnsureIndex(x => x.Id);
             collection.EnsureIndex(x => x.FlightDate);
             collection.EnsureIndex(x => x.DocumentNumber);
         }
@@ -45,8 +45,13 @@ namespace QR1000Reader
         public static void Insert(PassengerRecord record)
         {
             var collection = _db.GetCollection<PassengerRecord>("PassengerRecords");
-            record.Id = collection.Count() + 1;
             record.CreatedTime = DateTime.Now;
+            
+            // 获取最大的 Id 并加 1，避免重复
+            var allRecords = collection.FindAll().ToList();
+            var maxId = allRecords.Any() ? allRecords.Max(x => x.Id) : 0;
+            record.Id = maxId + 1;
+            
             collection.Insert(record);
         }
 
