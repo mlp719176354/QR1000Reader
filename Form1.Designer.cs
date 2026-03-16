@@ -98,47 +98,47 @@
             // lblUserID
             //
             this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(12, 15);
+            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserID.Location = new System.Drawing.Point(12, 12);
             this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(75, 17);
+            this.lblUserID.Size = new System.Drawing.Size(89, 20);
             this.lblUserID.Text = "User ID:";
             //
             // txtUserID
             //
-            this.txtUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserID.Location = new System.Drawing.Point(80, 12);
+            this.txtUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserID.Location = new System.Drawing.Point(100, 10);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.ReadOnly = true;
-            this.txtUserID.Size = new System.Drawing.Size(120, 23);
+            this.txtUserID.Size = new System.Drawing.Size(120, 26);
             this.txtUserID.TabIndex = 0;
             //
             // lblDeparturePort
             //
             this.lblDeparturePort.AutoSize = true;
-            this.lblDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeparturePort.Location = new System.Drawing.Point(10, 25);
+            this.lblDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeparturePort.Location = new System.Drawing.Point(12, 45);
             this.lblDeparturePort.Name = "lblDeparturePort";
-            this.lblDeparturePort.Size = new System.Drawing.Size(77, 17);
+            this.lblDeparturePort.Size = new System.Drawing.Size(93, 20);
             this.lblDeparturePort.Text = "始发港*:";
             //
             // cmbDeparturePort
             //
             this.cmbDeparturePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeparturePort.Location = new System.Drawing.Point(80, 22);
+            this.cmbDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeparturePort.Location = new System.Drawing.Point(100, 42);
             this.cmbDeparturePort.Name = "cmbDeparturePort";
-            this.cmbDeparturePort.Size = new System.Drawing.Size(150, 25);
+            this.cmbDeparturePort.Size = new System.Drawing.Size(150, 28);
             this.cmbDeparturePort.TabIndex = 1;
             this.cmbDeparturePort.SelectedIndexChanged += new System.EventHandler(this.cmbDeparturePort_SelectedIndexChanged);
             //
             // txtDepartureCode
             //
-            this.txtDepartureCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDepartureCode.Location = new System.Drawing.Point(240, 22);
+            this.txtDepartureCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDepartureCode.Location = new System.Drawing.Point(260, 42);
             this.txtDepartureCode.Name = "txtDepartureCode";
             this.txtDepartureCode.ReadOnly = true;
-            this.txtDepartureCode.Size = new System.Drawing.Size(60, 23);
+            this.txtDepartureCode.Size = new System.Drawing.Size(60, 26);
             this.txtDepartureCode.TabIndex = 2;
             //
             // lblArrivalPort
@@ -296,9 +296,10 @@
             this.grpInput.Controls.Add(this.txtPassengerName);
             this.grpInput.Controls.Add(this.lblTicketNumber);
             this.grpInput.Controls.Add(this.txtTicketNumber);
-            this.grpInput.Location = new System.Drawing.Point(12, 40);
+            this.grpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpInput.Location = new System.Drawing.Point(12, 45);
             this.grpInput.Name = "grpInput";
-            this.grpInput.Size = new System.Drawing.Size(320, 280);
+            this.grpInput.Size = new System.Drawing.Size(340, 340);
             this.grpInput.TabIndex = 1;
             this.grpInput.TabStop = false;
             this.grpInput.Text = "旅客信息";
@@ -311,9 +312,10 @@
             this.grpReadCard.Controls.Add(this.rbtnReaderInput);
             this.grpReadCard.Controls.Add(this.lblRecognizedText);
             this.grpReadCard.Controls.Add(this.txtRecognizedText);
-            this.grpReadCard.Location = new System.Drawing.Point(350, 40);
+            this.grpReadCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpReadCard.Location = new System.Drawing.Point(365, 45);
             this.grpReadCard.Name = "grpReadCard";
-            this.grpReadCard.Size = new System.Drawing.Size(520, 280);
+            this.grpReadCard.Size = new System.Drawing.Size(540, 340);
             this.grpReadCard.TabIndex = 2;
             this.grpReadCard.TabStop = false;
             this.grpReadCard.Text = "读卡器";
@@ -375,13 +377,13 @@
             //
             // txtRecognizedText
             //
-            this.txtRecognizedText.Location = new System.Drawing.Point(10, 55);
+            this.txtRecognizedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRecognizedText.Location = new System.Drawing.Point(15, 50);
             this.txtRecognizedText.Multiline = true;
             this.txtRecognizedText.Name = "txtRecognizedText";
             this.txtRecognizedText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRecognizedText.Size = new System.Drawing.Size(500, 215);
+            this.txtRecognizedText.Size = new System.Drawing.Size(510, 275);
             this.txtRecognizedText.TabIndex = 3;
-            this.txtRecognizedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             //
             // btnSave
             //
