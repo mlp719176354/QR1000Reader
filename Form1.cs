@@ -113,6 +113,9 @@ namespace QR1000Reader
             // 加载今天的记录
             LoadData();
 
+            // 如果有历史记录，从最后一条记录读取默认值
+            LoadLastRecordDefaults();
+
             // 连接 WebSocket
             ConnectWebSocket();
         }
@@ -124,7 +127,7 @@ namespace QR1000Reader
             var portsWithEmpty = new List<PortInfo>();
             portsWithEmpty.Add(new PortInfo { Code = "", Name = "" });
             portsWithEmpty.AddRange(ports);
-            
+
             cmbDeparturePort.DataSource = new BindingSource(portsWithEmpty, null);
             cmbDeparturePort.DisplayMember = "Name";
             cmbDeparturePort.ValueMember = "Code";
@@ -146,6 +149,55 @@ namespace QR1000Reader
             var flightTimeConfig = ConfigHelper.GetFlightTimeConfig();
             txtFlightHour.Text = flightTimeConfig.DefaultHour.ToString("D2");
             txtFlightMinute.Text = flightTimeConfig.DefaultMinute.ToString("D2");
+        }
+
+        /// <summary>
+        /// 从最后一条记录加载默认值（始发港、到达港、时间）
+        /// </summary>
+        private void LoadLastRecordDefaults()
+        {
+            var lastRecord = DatabaseHelper.GetLastRecord();
+            if (lastRecord != null)
+            {
+                // 设置始发港
+                if (!string.IsNullOrEmpty(lastRecord.DeparturePortCode))
+                {
+                    for (int i = 0; i < cmbDeparturePort.Items.Count; i++)
+                    {
+                        var port = (PortInfo)cmbDeparturePort.Items[i];
+                        if (port.Code == lastRecord.DeparturePortCode)
+                        {
+                            cmbDeparturePort.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                // 设置到达港
+                if (!string.IsNullOrEmpty(lastRecord.ArrivalPortCode))
+                {
+                    for (int i = 0; i < cmbArrivalPort.Items.Count; i++)
+                    {
+                        var port = (PortInfo)cmbArrivalPort.Items[i];
+                        if (port.Code == lastRecord.ArrivalPortCode)
+                        {
+                            cmbArrivalPort.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                // 设置航班时间
+                if (!string.IsNullOrEmpty(lastRecord.FlightTime))
+                {
+                    string[] timeParts = lastRecord.FlightTime.Split(':');
+                    if (timeParts.Length == 2)
+                    {
+                        txtFlightHour.Text = timeParts[0];
+                        txtFlightMinute.Text = timeParts[1];
+                    }
+                }
+            }
         }
 
         private async void ConnectWebSocket()
@@ -764,7 +816,38 @@ namespace QR1000Reader
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // 验证必填字段
+            // 1. 验证证件号码是否为空
+            if (string.IsNullOrWhiteSpace(txtDocumentNumber.Text))
+            {
+                MessageBox.Show("证件号码不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDocumentNumber.Focus();
+                return;
+            }
+
+            // 2. 验证旅客姓名是否为空
+            if (string.IsNullOrWhiteSpace(txtPassengerName.Text))
+            {
+                MessageBox.Show("旅客姓名不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassengerName.Focus();
+                return;
+            }
+
+            // 3. 检查是否与最后一条记录重复
+            var lastRecord = DatabaseHelper.GetLastRecord();
+            if (lastRecord != null)
+            {
+                bool isSameDocNumber = string.Equals(txtDocumentNumber.Text.Trim(), lastRecord.DocumentNumber?.Trim(), StringComparison.OrdinalIgnoreCase);
+                bool isSameName = string.Equals(txtPassengerName.Text.Trim(), lastRecord.PassengerName?.Trim(), StringComparison.OrdinalIgnoreCase);
+
+                if (isSameDocNumber && isSameName)
+                {
+                    MessageBox.Show($"证件号码和旅客姓名与最后一条记录相同，重复保存！\r\n\r\n最后一条记录：{lastRecord.PassengerName} - {lastRecord.DocumentNumber}", 
+                        "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            // 4. 验证其他必填字段
             if (string.IsNullOrWhiteSpace(txtDepartureCode.Text) ||
                 string.IsNullOrWhiteSpace(txtArrivalCode.Text) ||
                 (string.IsNullOrWhiteSpace(txtFlightHour.Text) || string.IsNullOrWhiteSpace(txtFlightMinute.Text)) ||
@@ -965,14 +1048,13 @@ namespace QR1000Reader
 
         private void AdjustDataGridViewSize()
         {
-            // DataGridView 从顶部 370 开始，底部留 50 像素
-            int dataGridViewHeight = this.ClientSize.Height - 370 - 50;
-            if (dataGridViewHeight < 200) dataGridViewHeight = 200;
-            
+            // 使用固定高度 
+            int dataGridViewHeight = 300;
+
             // DataGridView 宽度为窗口宽度减去左右边距
             int dataGridViewWidth = this.ClientSize.Width - 24;
             if (dataGridViewWidth < 800) dataGridViewWidth = 800;
-            
+
             dataGridView.Size = new Size(dataGridViewWidth, dataGridViewHeight);
             
             // 调整最后一列的宽度以填充剩余空间

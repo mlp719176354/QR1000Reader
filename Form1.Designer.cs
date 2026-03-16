@@ -319,7 +319,7 @@
             this.grpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpInput.Location = new System.Drawing.Point(12, 40);
             this.grpInput.Name = "grpInput";
-            this.grpInput.Size = new System.Drawing.Size(360, 310);
+            this.grpInput.Size = new System.Drawing.Size(360, 280);
             this.grpInput.TabIndex = 1;
             this.grpInput.TabStop = false;
             this.grpInput.Text = "旅客信息";
@@ -335,7 +335,7 @@
             this.grpReadCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReadCard.Location = new System.Drawing.Point(385, 40);
             this.grpReadCard.Name = "grpReadCard";
-            this.grpReadCard.Size = new System.Drawing.Size(560, 310);
+            this.grpReadCard.Size = new System.Drawing.Size(560, 280);
             this.grpReadCard.TabIndex = 2;
             this.grpReadCard.TabStop = false;
             this.grpReadCard.Text = "读卡器";
@@ -349,7 +349,7 @@
             this.grpButtons.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpButtons.Location = new System.Drawing.Point(960, 40);
             this.grpButtons.Name = "grpButtons";
-            this.grpButtons.Size = new System.Drawing.Size(130, 310);
+            this.grpButtons.Size = new System.Drawing.Size(130, 280);
             this.grpButtons.TabIndex = 3;
             this.grpButtons.TabStop = false;
             this.grpButtons.Text = "操作";
@@ -417,15 +417,15 @@
             this.txtRecognizedText.Multiline = true;
             this.txtRecognizedText.Name = "txtRecognizedText";
             this.txtRecognizedText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRecognizedText.Size = new System.Drawing.Size(530, 240);
+            this.txtRecognizedText.Size = new System.Drawing.Size(530, 210);
             this.txtRecognizedText.TabIndex = 3;
             //
             // btnSave
             //
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(15, 45);
+            this.btnSave.Location = new System.Drawing.Point(15, 40);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 50);
+            this.btnSave.Size = new System.Drawing.Size(100, 45);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "确定";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -434,9 +434,9 @@
             // btnClearSingle
             //
             this.btnClearSingle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSingle.Location = new System.Drawing.Point(15, 100);
+            this.btnClearSingle.Location = new System.Drawing.Point(15, 90);
             this.btnClearSingle.Name = "btnClearSingle";
-            this.btnClearSingle.Size = new System.Drawing.Size(100, 50);
+            this.btnClearSingle.Size = new System.Drawing.Size(100, 45);
             this.btnClearSingle.TabIndex = 4;
             this.btnClearSingle.Text = "清除单条";
             this.btnClearSingle.UseVisualStyleBackColor = true;
@@ -445,9 +445,9 @@
             // btnClearAll
             //
             this.btnClearAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearAll.Location = new System.Drawing.Point(15, 155);
+            this.btnClearAll.Location = new System.Drawing.Point(15, 140);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(100, 50);
+            this.btnClearAll.Size = new System.Drawing.Size(100, 45);
             this.btnClearAll.TabIndex = 5;
             this.btnClearAll.Text = "清除全部";
             this.btnClearAll.UseVisualStyleBackColor = true;
@@ -456,9 +456,9 @@
             // btnExport
             //
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(15, 210);
+            this.btnExport.Location = new System.Drawing.Point(15, 190);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 50);
+            this.btnExport.Size = new System.Drawing.Size(100, 45);
             this.btnExport.TabIndex = 6;
             this.btnExport.Text = "导出 Excel";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -488,7 +488,7 @@
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件状态", Width = 85 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "创建时间", Width = 100 }
             });
-            this.dataGridView.Location = new System.Drawing.Point(12, 360);
+            this.dataGridView.Location = new System.Drawing.Point(12, 330);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 30;
@@ -502,12 +502,15 @@
             this.dataGridView.ColumnHeadersDefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView.AllowUserToOrderColumns = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             //
             // lblVersion
             //
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(12, 730);
+            this.lblVersion.Location = new System.Drawing.Point(12, 390);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(120, 20);
             this.lblVersion.TabIndex = 8;
@@ -528,7 +531,7 @@
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.ClientSize = new System.Drawing.Size(1366, 420);
             this.Controls.Add(this.lblUserID);
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.grpInput);
