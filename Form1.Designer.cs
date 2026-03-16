@@ -37,6 +37,7 @@
         private System.Windows.Forms.TextBox txtTicketNumber;
         private System.Windows.Forms.GroupBox grpInput;
         private System.Windows.Forms.GroupBox grpReadCard;
+        private System.Windows.Forms.GroupBox grpButtons;
         private System.Windows.Forms.Button btnReadCard;
         private System.Windows.Forms.RadioButton rbtnManualInput;
         private System.Windows.Forms.RadioButton rbtnReaderInput;
@@ -77,6 +78,7 @@
             this.txtTicketNumber = new System.Windows.Forms.TextBox();
             this.grpInput = new System.Windows.Forms.GroupBox();
             this.grpReadCard = new System.Windows.Forms.GroupBox();
+            this.grpButtons = new System.Windows.Forms.GroupBox();
             this.btnToggleAutoMode = new System.Windows.Forms.Button();
             this.btnReadCard = new System.Windows.Forms.Button();
             this.rbtnManualInput = new System.Windows.Forms.RadioButton();
@@ -92,6 +94,7 @@
             this.lblVersion = new System.Windows.Forms.Label();
             this.grpInput.SuspendLayout();
             this.grpReadCard.SuspendLayout();
+            this.grpButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             //
@@ -337,6 +340,20 @@
             this.grpReadCard.TabStop = false;
             this.grpReadCard.Text = "读卡器";
             //
+            // grpButtons
+            //
+            this.grpButtons.Controls.Add(this.btnExport);
+            this.grpButtons.Controls.Add(this.btnClearAll);
+            this.grpButtons.Controls.Add(this.btnClearSingle);
+            this.grpButtons.Controls.Add(this.btnSave);
+            this.grpButtons.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpButtons.Location = new System.Drawing.Point(960, 50);
+            this.grpButtons.Name = "grpButtons";
+            this.grpButtons.Size = new System.Drawing.Size(130, 340);
+            this.grpButtons.TabIndex = 3;
+            this.grpButtons.TabStop = false;
+            this.grpButtons.Text = "操作";
+            //
             // btnReadCard
             //
             this.btnReadCard.Location = new System.Drawing.Point(10, 20);
@@ -406,9 +423,9 @@
             // btnSave
             //
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(12, 400);
+            this.btnSave.Location = new System.Drawing.Point(15, 50);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 35);
+            this.btnSave.Size = new System.Drawing.Size(100, 55);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "确定";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -417,9 +434,9 @@
             // btnClearSingle
             //
             this.btnClearSingle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSingle.Location = new System.Drawing.Point(125, 400);
+            this.btnClearSingle.Location = new System.Drawing.Point(15, 115);
             this.btnClearSingle.Name = "btnClearSingle";
-            this.btnClearSingle.Size = new System.Drawing.Size(100, 35);
+            this.btnClearSingle.Size = new System.Drawing.Size(100, 55);
             this.btnClearSingle.TabIndex = 4;
             this.btnClearSingle.Text = "清除单条";
             this.btnClearSingle.UseVisualStyleBackColor = true;
@@ -428,9 +445,9 @@
             // btnClearAll
             //
             this.btnClearAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearAll.Location = new System.Drawing.Point(238, 400);
+            this.btnClearAll.Location = new System.Drawing.Point(15, 180);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(100, 35);
+            this.btnClearAll.Size = new System.Drawing.Size(100, 55);
             this.btnClearAll.TabIndex = 5;
             this.btnClearAll.Text = "清除全部";
             this.btnClearAll.UseVisualStyleBackColor = true;
@@ -439,9 +456,9 @@
             // btnExport
             //
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(351, 400);
+            this.btnExport.Location = new System.Drawing.Point(15, 245);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 35);
+            this.btnExport.Size = new System.Drawing.Size(100, 55);
             this.btnExport.TabIndex = 6;
             this.btnExport.Text = "导出 Excel";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -455,7 +472,7 @@
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dataGridView.ColumnHeadersHeight = 35;
+            this.dataGridView.ColumnHeadersHeight = 32;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "序号", Width = 45, Frozen = true },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港代码", Width = 75 },
@@ -516,10 +533,7 @@
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.grpInput);
             this.Controls.Add(this.grpReadCard);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnClearSingle);
-            this.Controls.Add(this.btnClearAll);
-            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.grpButtons);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.lblDeviceStatus);
             this.Controls.Add(this.lblVersion);
@@ -529,6 +543,7 @@
             this.grpInput.PerformLayout();
             this.grpReadCard.ResumeLayout(false);
             this.grpReadCard.PerformLayout();
+            this.grpButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
