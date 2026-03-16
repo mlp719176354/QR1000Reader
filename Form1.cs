@@ -42,7 +42,7 @@ namespace QR1000Reader
         private void InitializeTimer()
         {
             autoTimer = new System.Windows.Forms.Timer();
-            autoTimer.Interval = 1000; // 1000ms 检测一次（降低 CPU 占用）
+            autoTimer.Interval = 500; // 500ms 检测一次
             autoTimer.Tick += AutoTimer_Tick;
             autoTimer.Start();
         }
@@ -142,9 +142,10 @@ namespace QR1000Reader
             cmbDocumentType.DisplayMember = "Name";
             cmbDocumentType.ValueMember = "Code";
 
-            // 航班时间输入框初始化为空白
-            txtFlightHour.Text = "";
-            txtFlightMinute.Text = "";
+            // 航班时间输入框初始化（从配置读取）
+            var flightTimeConfig = ConfigHelper.GetFlightTimeConfig();
+            txtFlightHour.Text = flightTimeConfig.DefaultHour.ToString("D2");
+            txtFlightMinute.Text = flightTimeConfig.DefaultMinute.ToString("D2");
         }
 
         private async void ConnectWebSocket()
@@ -309,42 +310,12 @@ namespace QR1000Reader
         }
 
         /// <summary>
-        /// 从 Base64 字符串显示图像到 pictureBox
+        /// 从 Base64 字符串显示图像（已禁用）
         /// </summary>
         private void DisplayImageFromBase64(string base64String)
         {
-            try
-            {
-                // 移除可能存在的头部（如 "data:image/jpeg;base64,"）
-                string base64Data = base64String;
-                if (base64String.Contains(","))
-                {
-                    base64Data = base64String.Substring(base64String.IndexOf(",") + 1);
-                }
-
-                byte[] imageBytes = Convert.FromBase64String(base64Data);
-                using (var ms = new MemoryStream(imageBytes))
-                {
-                    // 先释放旧图像
-                    if (pictureBox.Image != null)
-                    {
-                        pictureBox.Image.Dispose();
-                        pictureBox.Image = null;
-                    }
-
-                    // 创建新图像
-                    Image img = Image.FromStream(ms);
-                    pictureBox.Image = img;
-                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    
-                    txtRecognizedText.AppendText($"图像已显示：{img.Width}x{img.Height}\r\n");
-                }
-            }
-            catch (Exception ex)
-            {
-                txtRecognizedText.AppendText($"图像显示失败：{ex.Message}\r\n");
-                txtRecognizedText.AppendText($"Base64 长度：{base64String.Length}\r\n");
-            }
+            // 图像显示功能已禁用
+            txtRecognizedText.AppendText($"收到图像数据，长度：{base64String.Length}\r\n");
         }
 
         private void WebSocketClient_DeviceStatusChanged(object? sender, DeviceStatusEventArgs e)
@@ -473,22 +444,7 @@ namespace QR1000Reader
             {
                 await _webSocketClient.GetImageAsync();
 
-                // 图像通过 CardDataReceived 事件处理
-                if (!string.IsNullOrEmpty(_currentImageBase64))
-                {
-                    try
-                    {
-                        byte[] imageBytes = Convert.FromBase64String(_currentImageBase64);
-                        using (var ms = new MemoryStream(imageBytes))
-                        {
-                            pictureBox.Image = Image.FromStream(ms);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        txtRecognizedText.AppendText($"图像加载失败：{ex.Message}\r\n");
-                    }
-                }
+                // 图像显示功能已禁用
             }
             catch (Exception ex)
             {
@@ -808,66 +764,14 @@ namespace QR1000Reader
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // 1. 验证出发港
-            if (cmbDeparturePort.SelectedIndex <= 0 || string.IsNullOrWhiteSpace(txtDepartureCode.Text))
+            // 验证必填字段
+            if (string.IsNullOrWhiteSpace(txtDepartureCode.Text) ||
+                string.IsNullOrWhiteSpace(txtArrivalCode.Text) ||
+                (string.IsNullOrWhiteSpace(txtFlightHour.Text) || string.IsNullOrWhiteSpace(txtFlightMinute.Text)) ||
+                cmbDocumentType.SelectedValue == null)
             {
-                MessageBox.Show("请选择出发港！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmbDeparturePort.Focus();
+                MessageBox.Show("请填写所有带*的必填字段", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
-
-            // 2. 验证到达港
-            if (cmbArrivalPort.SelectedIndex <= 0 || string.IsNullOrWhiteSpace(txtArrivalCode.Text))
-            {
-                MessageBox.Show("请选择到达港！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmbArrivalPort.Focus();
-                return;
-            }
-
-            // 3. 验证航班时间
-            if (string.IsNullOrWhiteSpace(txtFlightHour.Text) || string.IsNullOrWhiteSpace(txtFlightMinute.Text))
-            {
-                MessageBox.Show("请填写航班时间！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtFlightHour.Focus();
-                return;
-            }
-
-            // 4. 验证证件类型
-            if (cmbDocumentType.SelectedValue == null)
-            {
-                MessageBox.Show("请选择证件类型！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmbDocumentType.Focus();
-                return;
-            }
-
-            // 5. 验证旅客姓名和证件号码是否为空
-            if (string.IsNullOrWhiteSpace(txtPassengerName.Text))
-            {
-                MessageBox.Show("旅客姓名不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPassengerName.Focus();
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtDocumentNumber.Text))
-            {
-                MessageBox.Show("证件号码不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDocumentNumber.Focus();
-                return;
-            }
-
-            // 6. 检查是否与上一条记录重复
-            var lastRecord = DatabaseHelper.GetLastRecord();
-            if (lastRecord != null)
-            {
-                bool isSameName = string.Equals(txtPassengerName.Text.Trim(), lastRecord.PassengerName?.Trim(), StringComparison.OrdinalIgnoreCase);
-                bool isSameDocNumber = string.Equals(txtDocumentNumber.Text.Trim(), lastRecord.DocumentNumber?.Trim(), StringComparison.OrdinalIgnoreCase);
-
-                if (isSameName && isSameDocNumber)
-                {
-                    MessageBox.Show($"旅客姓名和证件号码与上一条记录相同，重复保存！\r\n\r\n上一条记录：{lastRecord.PassengerName} - {lastRecord.DocumentNumber}", 
-                        "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
             }
 
             // 解析证件有效期
@@ -924,7 +828,6 @@ namespace QR1000Reader
             txtPassengerName.Clear();
             txtTicketNumber.Clear();
             txtRecognizedText.Clear();
-            pictureBox.Image = null;
             cmbDocumentType.SelectedValue = "OTHER";
             txtDepartureCode.Clear();
             txtArrivalCode.Clear();
@@ -936,9 +839,6 @@ namespace QR1000Reader
 
         private void LoadData()
         {
-            // 暂停绘制以提高性能
-            dataGridView.SuspendLayout();
-            
             var records = DatabaseHelper.GetTodayRecords();
             dataGridView.Rows.Clear();
 
@@ -985,10 +885,10 @@ namespace QR1000Reader
                 // 确保最后一行完全可见
                 dataGridView.FirstDisplayedScrollingRowIndex = dataGridView.Rows.Count - 1;
                 dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells[0];
+                
+                // 强制刷新显示
+                dataGridView.Refresh();
             }
-            
-            // 恢复绘制
-            dataGridView.ResumeLayout();
         }
 
         private void btnClearSingle_Click(object sender, EventArgs e)
@@ -1065,24 +965,16 @@ namespace QR1000Reader
 
         private void AdjustDataGridViewSize()
         {
-            // 获取任务栏高度（使用 Screen 类）
-            int taskbarHeight = Screen.PrimaryScreen.WorkingArea.Bottom - Screen.PrimaryScreen.Bounds.Bottom;
-            taskbarHeight = Math.Abs(taskbarHeight); // 任务栏高度为正值
-            
-            // 计算可用高度：从顶部 370 开始，底部留出任务栏空间和版本文本空间
-            int bottomMargin = 50 + taskbarHeight; // 底部边距 + 任务栏高度
-            int dataGridViewHeight = this.ClientSize.Height - 370 - bottomMargin;
+            // DataGridView 从顶部 370 开始，底部留 50 像素
+            int dataGridViewHeight = this.ClientSize.Height - 370 - 50;
             if (dataGridViewHeight < 200) dataGridViewHeight = 200;
-
+            
             // DataGridView 宽度为窗口宽度减去左右边距
             int dataGridViewWidth = this.ClientSize.Width - 24;
             if (dataGridViewWidth < 800) dataGridViewWidth = 800;
-
+            
             dataGridView.Size = new Size(dataGridViewWidth, dataGridViewHeight);
             
-            // 设置版本文本位置（在 DataGridView 下方）
-            lblVersion.Location = new Point(12, dataGridView.Bottom + 10);
-
             // 调整最后一列的宽度以填充剩余空间
             if (dataGridView.Columns.Count > 0)
             {

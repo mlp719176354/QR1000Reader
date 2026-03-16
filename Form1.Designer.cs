@@ -42,7 +42,6 @@
         private System.Windows.Forms.RadioButton rbtnReaderInput;
         private System.Windows.Forms.Label lblRecognizedText;
         private System.Windows.Forms.TextBox txtRecognizedText;
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClearSingle;
         private System.Windows.Forms.Button btnClearAll;
@@ -84,7 +83,6 @@
             this.rbtnReaderInput = new System.Windows.Forms.RadioButton();
             this.lblRecognizedText = new System.Windows.Forms.Label();
             this.txtRecognizedText = new System.Windows.Forms.TextBox();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClearSingle = new System.Windows.Forms.Button();
             this.btnClearAll = new System.Windows.Forms.Button();
@@ -94,49 +92,53 @@
             this.lblVersion = new System.Windows.Forms.Label();
             this.grpInput.SuspendLayout();
             this.grpReadCard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             //
             // lblUserID
             //
             this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserID.Location = new System.Drawing.Point(12, 15);
             this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(65, 12);
+            this.lblUserID.Size = new System.Drawing.Size(75, 17);
             this.lblUserID.Text = "User ID:";
             //
             // txtUserID
             //
+            this.txtUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserID.Location = new System.Drawing.Point(80, 12);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.ReadOnly = true;
-            this.txtUserID.Size = new System.Drawing.Size(100, 21);
+            this.txtUserID.Size = new System.Drawing.Size(120, 23);
             this.txtUserID.TabIndex = 0;
             //
             // lblDeparturePort
             //
             this.lblDeparturePort.AutoSize = true;
+            this.lblDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeparturePort.Location = new System.Drawing.Point(10, 25);
             this.lblDeparturePort.Name = "lblDeparturePort";
-            this.lblDeparturePort.Size = new System.Drawing.Size(65, 12);
+            this.lblDeparturePort.Size = new System.Drawing.Size(77, 17);
             this.lblDeparturePort.Text = "始发港*:";
             //
             // cmbDeparturePort
             //
             this.cmbDeparturePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeparturePort.Location = new System.Drawing.Point(80, 22);
             this.cmbDeparturePort.Name = "cmbDeparturePort";
-            this.cmbDeparturePort.Size = new System.Drawing.Size(150, 20);
+            this.cmbDeparturePort.Size = new System.Drawing.Size(150, 25);
             this.cmbDeparturePort.TabIndex = 1;
             this.cmbDeparturePort.SelectedIndexChanged += new System.EventHandler(this.cmbDeparturePort_SelectedIndexChanged);
             //
             // txtDepartureCode
             //
+            this.txtDepartureCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepartureCode.Location = new System.Drawing.Point(240, 22);
             this.txtDepartureCode.Name = "txtDepartureCode";
             this.txtDepartureCode.ReadOnly = true;
-            this.txtDepartureCode.Size = new System.Drawing.Size(60, 21);
+            this.txtDepartureCode.Size = new System.Drawing.Size(60, 23);
             this.txtDepartureCode.TabIndex = 2;
             //
             // lblArrivalPort
@@ -309,7 +311,6 @@
             this.grpReadCard.Controls.Add(this.rbtnReaderInput);
             this.grpReadCard.Controls.Add(this.lblRecognizedText);
             this.grpReadCard.Controls.Add(this.txtRecognizedText);
-            this.grpReadCard.Controls.Add(this.pictureBox);
             this.grpReadCard.Location = new System.Drawing.Point(350, 40);
             this.grpReadCard.Name = "grpReadCard";
             this.grpReadCard.Size = new System.Drawing.Size(520, 280);
@@ -374,22 +375,13 @@
             //
             // txtRecognizedText
             //
-            this.txtRecognizedText.Location = new System.Drawing.Point(10, 75);
+            this.txtRecognizedText.Location = new System.Drawing.Point(10, 55);
             this.txtRecognizedText.Multiline = true;
             this.txtRecognizedText.Name = "txtRecognizedText";
             this.txtRecognizedText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRecognizedText.Size = new System.Drawing.Size(160, 190);
+            this.txtRecognizedText.Size = new System.Drawing.Size(500, 215);
             this.txtRecognizedText.TabIndex = 3;
-            //
-            // pictureBox
-            //
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(180, 55);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(320, 210);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 4;
-            this.pictureBox.TabStop = false;
+            this.txtRecognizedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             //
             // btnSave
             //
@@ -508,7 +500,6 @@
             this.grpInput.PerformLayout();
             this.grpReadCard.ResumeLayout(false);
             this.grpReadCard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
