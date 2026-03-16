@@ -120,7 +120,7 @@
             //
             this.lblDeparturePort.AutoSize = true;
             this.lblDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeparturePort.Location = new System.Drawing.Point(12, 45);
+            this.lblDeparturePort.Location = new System.Drawing.Point(15, 45);
             this.lblDeparturePort.Name = "lblDeparturePort";
             this.lblDeparturePort.Size = new System.Drawing.Size(93, 20);
             this.lblDeparturePort.Text = "始发港*:";
@@ -129,7 +129,7 @@
             //
             this.cmbDeparturePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDeparturePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeparturePort.Location = new System.Drawing.Point(100, 42);
+            this.cmbDeparturePort.Location = new System.Drawing.Point(115, 42);
             this.cmbDeparturePort.Name = "cmbDeparturePort";
             this.cmbDeparturePort.Size = new System.Drawing.Size(150, 28);
             this.cmbDeparturePort.TabIndex = 1;
@@ -138,10 +138,10 @@
             // txtDepartureCode
             //
             this.txtDepartureCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDepartureCode.Location = new System.Drawing.Point(260, 42);
+            this.txtDepartureCode.Location = new System.Drawing.Point(275, 42);
             this.txtDepartureCode.Name = "txtDepartureCode";
             this.txtDepartureCode.ReadOnly = true;
-            this.txtDepartureCode.Size = new System.Drawing.Size(60, 26);
+            this.txtDepartureCode.Size = new System.Drawing.Size(70, 26);
             this.txtDepartureCode.TabIndex = 2;
             //
             // lblArrivalPort
@@ -186,7 +186,7 @@
             this.dtpFlightDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFlightDate.Location = new System.Drawing.Point(115, 117);
             this.dtpFlightDate.Name = "dtpFlightDate";
-            this.dtpFlightDate.Size = new System.Drawing.Size(150, 26);
+            this.dtpFlightDate.Size = new System.Drawing.Size(210, 26);
             this.dtpFlightDate.TabIndex = 5;
             //
             // lblFlightTime

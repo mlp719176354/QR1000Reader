@@ -1049,7 +1049,7 @@ namespace QR1000Reader
         private void AdjustDataGridViewSize()
         {
             // 使用固定高度 
-            int dataGridViewHeight = 300;
+            int dataGridViewHeight = 260;
 
             // DataGridView 宽度为窗口宽度减去左右边距
             int dataGridViewWidth = this.ClientSize.Width - 24;
