@@ -25,6 +25,8 @@ DocumentTypes:
     Name: "往来港澳通行证"
   - Code: "PASSPORT"
     Name: "外国护照"
+  - Code: "CHINA_PASSPORT"
+    Name: "中国护照"
   - Code: "HKID"
     Name: "香港身份证"
   - Code: "MOID"

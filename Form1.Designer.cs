@@ -144,135 +144,152 @@
             // lblArrivalPort
             //
             this.lblArrivalPort.AutoSize = true;
-            this.lblArrivalPort.Location = new System.Drawing.Point(10, 52);
+            this.lblArrivalPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArrivalPort.Location = new System.Drawing.Point(15, 85);
             this.lblArrivalPort.Name = "lblArrivalPort";
-            this.lblArrivalPort.Size = new System.Drawing.Size(65, 12);
+            this.lblArrivalPort.Size = new System.Drawing.Size(93, 20);
             this.lblArrivalPort.Text = "到达港*:";
             //
             // cmbArrivalPort
             //
             this.cmbArrivalPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbArrivalPort.Location = new System.Drawing.Point(80, 49);
+            this.cmbArrivalPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbArrivalPort.Location = new System.Drawing.Point(115, 82);
             this.cmbArrivalPort.Name = "cmbArrivalPort";
-            this.cmbArrivalPort.Size = new System.Drawing.Size(150, 20);
+            this.cmbArrivalPort.Size = new System.Drawing.Size(150, 28);
             this.cmbArrivalPort.TabIndex = 3;
             this.cmbArrivalPort.SelectedIndexChanged += new System.EventHandler(this.cmbArrivalPort_SelectedIndexChanged);
             //
             // txtArrivalCode
             //
-            this.txtArrivalCode.Location = new System.Drawing.Point(240, 49);
+            this.txtArrivalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtArrivalCode.Location = new System.Drawing.Point(275, 82);
             this.txtArrivalCode.Name = "txtArrivalCode";
             this.txtArrivalCode.ReadOnly = true;
-            this.txtArrivalCode.Size = new System.Drawing.Size(60, 21);
+            this.txtArrivalCode.Size = new System.Drawing.Size(70, 26);
             this.txtArrivalCode.TabIndex = 4;
             //
             // lblFlightDate
             //
             this.lblFlightDate.AutoSize = true;
-            this.lblFlightDate.Location = new System.Drawing.Point(10, 79);
+            this.lblFlightDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFlightDate.Location = new System.Drawing.Point(15, 120);
             this.lblFlightDate.Name = "lblFlightDate";
-            this.lblFlightDate.Size = new System.Drawing.Size(65, 12);
+            this.lblFlightDate.Size = new System.Drawing.Size(93, 20);
             this.lblFlightDate.Text = "航班日期:";
             //
             // dtpFlightDate
             //
-            this.dtpFlightDate.Location = new System.Drawing.Point(80, 76);
+            this.dtpFlightDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFlightDate.Location = new System.Drawing.Point(115, 117);
             this.dtpFlightDate.Name = "dtpFlightDate";
-            this.dtpFlightDate.Size = new System.Drawing.Size(150, 21);
+            this.dtpFlightDate.Size = new System.Drawing.Size(150, 26);
             this.dtpFlightDate.TabIndex = 5;
             //
             // lblFlightTime
             //
             this.lblFlightTime.AutoSize = true;
-            this.lblFlightTime.Location = new System.Drawing.Point(10, 106);
+            this.lblFlightTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFlightTime.Location = new System.Drawing.Point(15, 155);
             this.lblFlightTime.Name = "lblFlightTime";
-            this.lblFlightTime.Size = new System.Drawing.Size(65, 12);
+            this.lblFlightTime.Size = new System.Drawing.Size(97, 20);
             this.lblFlightTime.Text = "航班时间*:";
             //
             // txtFlightHour
             //
-            this.txtFlightHour.Location = new System.Drawing.Point(80, 103);
+            this.txtFlightHour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFlightHour.Location = new System.Drawing.Point(115, 152);
             this.txtFlightHour.Name = "txtFlightHour";
-            this.txtFlightHour.Size = new System.Drawing.Size(45, 21);
+            this.txtFlightHour.Size = new System.Drawing.Size(50, 26);
             this.txtFlightHour.TabIndex = 6;
             this.txtFlightHour.MaxLength = 2;
             //
             // lblFlightTimeSeparator
             //
             this.lblFlightTimeSeparator.AutoSize = true;
-            this.lblFlightTimeSeparator.Location = new System.Drawing.Point(128, 106);
+            this.lblFlightTimeSeparator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFlightTimeSeparator.Location = new System.Drawing.Point(168, 155);
             this.lblFlightTimeSeparator.Name = "lblFlightTimeSeparator";
-            this.lblFlightTimeSeparator.Size = new System.Drawing.Size(11, 12);
+            this.lblFlightTimeSeparator.Size = new System.Drawing.Size(15, 20);
             this.lblFlightTimeSeparator.Text = ":";
             //
             // txtFlightMinute
             //
-            this.txtFlightMinute.Location = new System.Drawing.Point(142, 103);
+            this.txtFlightMinute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFlightMinute.Location = new System.Drawing.Point(185, 152);
             this.txtFlightMinute.Name = "txtFlightMinute";
-            this.txtFlightMinute.Size = new System.Drawing.Size(45, 21);
+            this.txtFlightMinute.Size = new System.Drawing.Size(50, 26);
             this.txtFlightMinute.TabIndex = 7;
             this.txtFlightMinute.MaxLength = 2;
             //
             // lblDocumentType
             //
             this.lblDocumentType.AutoSize = true;
-            this.lblDocumentType.Location = new System.Drawing.Point(10, 133);
+            this.lblDocumentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDocumentType.Location = new System.Drawing.Point(15, 190);
             this.lblDocumentType.Name = "lblDocumentType";
-            this.lblDocumentType.Size = new System.Drawing.Size(65, 12);
+            this.lblDocumentType.Size = new System.Drawing.Size(97, 20);
             this.lblDocumentType.Text = "证件类型*:";
             //
             // cmbDocumentType
             //
             this.cmbDocumentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDocumentType.Location = new System.Drawing.Point(80, 130);
+            this.cmbDocumentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDocumentType.Location = new System.Drawing.Point(115, 187);
             this.cmbDocumentType.Name = "cmbDocumentType";
-            this.cmbDocumentType.Size = new System.Drawing.Size(150, 20);
-            this.cmbDocumentType.TabIndex = 7;
+            this.cmbDocumentType.Size = new System.Drawing.Size(210, 28);
+            this.cmbDocumentType.TabIndex = 8;
             //
             // lblDocumentNumber
             //
             this.lblDocumentNumber.AutoSize = true;
-            this.lblDocumentNumber.Location = new System.Drawing.Point(10, 160);
+            this.lblDocumentNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDocumentNumber.Location = new System.Drawing.Point(15, 225);
             this.lblDocumentNumber.Name = "lblDocumentNumber";
-            this.lblDocumentNumber.Size = new System.Drawing.Size(65, 12);
+            this.lblDocumentNumber.Size = new System.Drawing.Size(97, 20);
             this.lblDocumentNumber.Text = "证件号码:";
             //
             // txtDocumentNumber
             //
-            this.txtDocumentNumber.Location = new System.Drawing.Point(80, 157);
+            this.txtDocumentNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocumentNumber.Location = new System.Drawing.Point(115, 222);
             this.txtDocumentNumber.Name = "txtDocumentNumber";
-            this.txtDocumentNumber.Size = new System.Drawing.Size(150, 21);
-            this.txtDocumentNumber.TabIndex = 8;
+            this.txtDocumentNumber.Size = new System.Drawing.Size(210, 26);
+            this.txtDocumentNumber.TabIndex = 9;
             //
             // lblPassengerName
             //
             this.lblPassengerName.AutoSize = true;
-            this.lblPassengerName.Location = new System.Drawing.Point(10, 187);
+            this.lblPassengerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassengerName.Location = new System.Drawing.Point(15, 260);
             this.lblPassengerName.Name = "lblPassengerName";
-            this.lblPassengerName.Size = new System.Drawing.Size(65, 12);
+            this.lblPassengerName.Size = new System.Drawing.Size(97, 20);
             this.lblPassengerName.Text = "旅客姓名:";
             //
             // txtPassengerName
             //
-            this.txtPassengerName.Location = new System.Drawing.Point(80, 184);
+            this.txtPassengerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassengerName.Location = new System.Drawing.Point(115, 257);
             this.txtPassengerName.Name = "txtPassengerName";
-            this.txtPassengerName.Size = new System.Drawing.Size(150, 21);
-            this.txtPassengerName.TabIndex = 9;
+            this.txtPassengerName.Size = new System.Drawing.Size(210, 26);
+            this.txtPassengerName.TabIndex = 10;
             //
             // lblTicketNumber
             //
             this.lblTicketNumber.AutoSize = true;
-            this.lblTicketNumber.Location = new System.Drawing.Point(10, 214);
+            this.lblTicketNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicketNumber.Location = new System.Drawing.Point(15, 295);
             this.lblTicketNumber.Name = "lblTicketNumber";
-            this.lblTicketNumber.Size = new System.Drawing.Size(65, 12);
+            this.lblTicketNumber.Size = new System.Drawing.Size(69, 20);
             this.lblTicketNumber.Text = "票号:";
             //
             // txtTicketNumber
             //
-            this.txtTicketNumber.Location = new System.Drawing.Point(80, 211);
+            this.txtTicketNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTicketNumber.Location = new System.Drawing.Point(115, 292);
             this.txtTicketNumber.Name = "txtTicketNumber";
-            this.txtTicketNumber.Size = new System.Drawing.Size(150, 21);
-            this.txtTicketNumber.TabIndex = 10;
+            this.txtTicketNumber.Size = new System.Drawing.Size(210, 26);
+            this.txtTicketNumber.TabIndex = 11;
             //
             // grpInput
             //
@@ -297,9 +314,9 @@
             this.grpInput.Controls.Add(this.lblTicketNumber);
             this.grpInput.Controls.Add(this.txtTicketNumber);
             this.grpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpInput.Location = new System.Drawing.Point(12, 45);
+            this.grpInput.Location = new System.Drawing.Point(12, 50);
             this.grpInput.Name = "grpInput";
-            this.grpInput.Size = new System.Drawing.Size(340, 340);
+            this.grpInput.Size = new System.Drawing.Size(360, 340);
             this.grpInput.TabIndex = 1;
             this.grpInput.TabStop = false;
             this.grpInput.Text = "旅客信息";
@@ -313,9 +330,9 @@
             this.grpReadCard.Controls.Add(this.lblRecognizedText);
             this.grpReadCard.Controls.Add(this.txtRecognizedText);
             this.grpReadCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpReadCard.Location = new System.Drawing.Point(365, 45);
+            this.grpReadCard.Location = new System.Drawing.Point(385, 50);
             this.grpReadCard.Name = "grpReadCard";
-            this.grpReadCard.Size = new System.Drawing.Size(540, 340);
+            this.grpReadCard.Size = new System.Drawing.Size(560, 340);
             this.grpReadCard.TabIndex = 2;
             this.grpReadCard.TabStop = false;
             this.grpReadCard.Text = "读卡器";
@@ -370,9 +387,10 @@
             // lblRecognizedText
             //
             this.lblRecognizedText.AutoSize = true;
-            this.lblRecognizedText.Location = new System.Drawing.Point(10, 55);
+            this.lblRecognizedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecognizedText.Location = new System.Drawing.Point(15, 25);
             this.lblRecognizedText.Name = "lblRecognizedText";
-            this.lblRecognizedText.Size = new System.Drawing.Size(65, 12);
+            this.lblRecognizedText.Size = new System.Drawing.Size(97, 20);
             this.lblRecognizedText.Text = "识别文字:";
             //
             // txtRecognizedText
@@ -382,14 +400,15 @@
             this.txtRecognizedText.Multiline = true;
             this.txtRecognizedText.Name = "txtRecognizedText";
             this.txtRecognizedText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRecognizedText.Size = new System.Drawing.Size(510, 275);
+            this.txtRecognizedText.Size = new System.Drawing.Size(530, 270);
             this.txtRecognizedText.TabIndex = 3;
             //
             // btnSave
             //
-            this.btnSave.Location = new System.Drawing.Point(12, 330);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(12, 400);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.Size = new System.Drawing.Size(100, 35);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "确定";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -397,9 +416,10 @@
             //
             // btnClearSingle
             //
-            this.btnClearSingle.Location = new System.Drawing.Point(118, 330);
+            this.btnClearSingle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSingle.Location = new System.Drawing.Point(125, 400);
             this.btnClearSingle.Name = "btnClearSingle";
-            this.btnClearSingle.Size = new System.Drawing.Size(100, 30);
+            this.btnClearSingle.Size = new System.Drawing.Size(100, 35);
             this.btnClearSingle.TabIndex = 4;
             this.btnClearSingle.Text = "清除单条";
             this.btnClearSingle.UseVisualStyleBackColor = true;
@@ -407,9 +427,10 @@
             //
             // btnClearAll
             //
-            this.btnClearAll.Location = new System.Drawing.Point(224, 330);
+            this.btnClearAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearAll.Location = new System.Drawing.Point(238, 400);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(100, 30);
+            this.btnClearAll.Size = new System.Drawing.Size(100, 35);
             this.btnClearAll.TabIndex = 5;
             this.btnClearAll.Text = "清除全部";
             this.btnClearAll.UseVisualStyleBackColor = true;
@@ -417,9 +438,10 @@
             //
             // btnExport
             //
-            this.btnExport.Location = new System.Drawing.Point(330, 330);
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(351, 400);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 30);
+            this.btnExport.Size = new System.Drawing.Size(100, 35);
             this.btnExport.TabIndex = 6;
             this.btnExport.Text = "导出 Excel";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -433,27 +455,30 @@
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataGridView.ColumnHeadersHeight = 35;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "序号", Width = 50, Frozen = true },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港代码", Width = 80 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "序号", Width = 45, Frozen = true },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港代码", Width = 75 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "始发港名称", Width = 100 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "到达港代码", Width = 80 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "到达港代码", Width = 75 },
                 new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "到达港名称", Width = 100 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班日期", Width = 100 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班时间", Width = 80 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件类型", Width = 100 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件号码", Width = 150 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "旅客姓名", Width = 120 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "票号", Width = 120 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件状态", Width = 80 },
-                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "创建时间", Width = 90 }
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班日期", Width = 110 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "航班时间", Width = 85 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件类型", Width = 120 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件号码", Width = 170 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "旅客姓名", Width = 130 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "票号", Width = 130 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "证件状态", Width = 85 },
+                new System.Windows.Forms.DataGridViewTextBoxColumn { Name = "创建时间", Width = 100 }
             });
-            this.dataGridView.Location = new System.Drawing.Point(12, 370);
+            this.dataGridView.Location = new System.Drawing.Point(12, 400);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.RowHeadersWidth = 25;
-            this.dataGridView.RowTemplate.Height = 23;
-            this.dataGridView.Size = new System.Drawing.Size(1400, 350);
+            this.dataGridView.RowHeadersWidth = 30;
+            this.dataGridView.RowTemplate.Height = 30;
+            this.dataGridView.Size = new System.Drawing.Size(1330, 320);
+            this.dataGridView.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView.TabIndex = 7;
             this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.dataGridView.EnableHeadersVisualStyles = false;
@@ -464,19 +489,21 @@
             // lblVersion
             //
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(12, 730);
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(12, 735);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(100, 12);
+            this.lblVersion.Size = new System.Drawing.Size(120, 20);
             this.lblVersion.TabIndex = 8;
-            this.lblVersion.Text = "版本：v2026.03.12";
+            this.lblVersion.Text = "版本：v2026.03.16";
             this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             //
             // lblDeviceStatus
             //
             this.lblDeviceStatus.AutoSize = true;
+            this.lblDeviceStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeviceStatus.Location = new System.Drawing.Point(650, 15);
             this.lblDeviceStatus.Name = "lblDeviceStatus";
-            this.lblDeviceStatus.Size = new System.Drawing.Size(65, 12);
+            this.lblDeviceStatus.Size = new System.Drawing.Size(97, 20);
             this.lblDeviceStatus.Text = "设备状态:";
             this.lblDeviceStatus.ForeColor = System.Drawing.Color.Red;
             //
@@ -484,7 +511,7 @@
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.ClientSize = new System.Drawing.Size(1366, 768);
             this.Controls.Add(this.lblUserID);
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.grpInput);
