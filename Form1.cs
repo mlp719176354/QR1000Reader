@@ -720,13 +720,22 @@ namespace QR1000Reader
         private void IdentifyDocumentType(Dictionary<string, string> fields)
         {
             // 根据字段判断证件类型
+            bool hasGATFields = fields.ContainsKey("往来港澳通行证") ||
+                               (fields.ContainsKey("CARD_NAME") && fields["CARD_NAME"].Contains("往来港澳通行证"));
+            bool hasChinaPassportFields = (fields.ContainsKey("CARD_NAME") && 
+                                           (fields["CARD_NAME"].Contains("中国普通护照") || 
+                                            fields["CARD_NAME"].Contains("中国护照"))) ||
+                                          (fields.ContainsKey("证件类型") && 
+                                           fields["证件类型"] == "PO") ||
+                                          (fields.ContainsKey("持证人国籍代码") && 
+                                           fields["持证人国籍代码"] == "CHN" &&
+                                           fields.ContainsKey("P"));
             bool hasEEPFields = fields.ContainsKey("签发机关") ||
                                fields.ContainsKey("有效期") && (fields.ContainsKey("往") || fields.ContainsKey("港澳"));
             bool hasPassportFields = fields.ContainsKey("持证人国籍代码") ||
                                     fields.ContainsKey("国籍") ||
                                     fields.ContainsKey("Date of birth") ||
                                     fields.ContainsKey("Dateofbirth") ||
-                                    fields.ContainsKey("P") ||
                                     (fields.ContainsKey("证件类型") && fields["证件类型"] == "P");
             bool hasHKIDFields = (fields.ContainsKey("中文姓名") || fields.ContainsKey("姓名")) &&
                                 (fields.ContainsKey("身份证") || fields.ContainsKey("ID Card") || fields.ContainsKey("IDCard"));
@@ -743,18 +752,22 @@ namespace QR1000Reader
             bool hasXGZFields = hasCRFields && (fields.ContainsKey("本证有效期至") || fields.ContainsKey("身份证件号码"));
             bool hasTBPFields = fields.ContainsKey("台湾居民来往大陆通行证") ||
                                (fields.ContainsKey("CARD_NAME") && fields["CARD_NAME"].Contains("台湾居民来往大陆通行证"));
-            bool hasGATFields = fields.ContainsKey("往来港澳通行证") ||
-                               (fields.ContainsKey("CARD_NAME") && fields["CARD_NAME"].Contains("往来港澳通行证"));
 
-            if (hasTBPFields)
-            {
-                cmbDocumentType.SelectedValue = "TBP";
-                txtRecognizedText.AppendText("证件类型：台胞证\r\n");
-            }
-            else if (hasGATFields)
+            // 往来港澳通行证为最高优先级
+            if (hasGATFields)
             {
                 cmbDocumentType.SelectedValue = "EEP";
                 txtRecognizedText.AppendText("证件类型：往来港澳通行证\r\n");
+            }
+            else if (hasChinaPassportFields)
+            {
+                cmbDocumentType.SelectedValue = "CHINA_PASSPORT";
+                txtRecognizedText.AppendText("证件类型：中国护照\r\n");
+            }
+            else if (hasTBPFields)
+            {
+                cmbDocumentType.SelectedValue = "TBP";
+                txtRecognizedText.AppendText("证件类型：台胞证\r\n");
             }
             else if (hasXGZFields)
             {
