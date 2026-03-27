@@ -938,10 +938,11 @@ namespace QR1000Reader
             var records = DatabaseHelper.GetTodayRecords();
             dataGridView.Rows.Clear();
 
+            int index = 1;
             foreach (var record in records)
             {
                 int rowIndex = dataGridView.Rows.Add(
-                    record.Id,
+                    index++,  // 使用序号而不是数据库 Id
                     record.DeparturePortCode,
                     record.DeparturePortName,
                     record.ArrivalPortCode,
